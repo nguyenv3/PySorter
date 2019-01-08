@@ -8,6 +8,7 @@ setup(
     author='Vincent Nguyen',
     author_email='None',
     install_requires=[
-        'Flask>=1.0.2'
+        'Flask>=1.0.2',
+        'pytest>=4.1.0'
     ]
 )
