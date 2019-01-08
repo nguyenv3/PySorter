@@ -9,6 +9,7 @@ setup(
     author_email='None',
     install_requires=[
         'Flask>=1.0.2',
-        'pytest>=4.1.0'
+        'pytest>=4.1.0',
+        'schematics==2.1.0'
     ]
 )

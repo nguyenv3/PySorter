@@ -1,7 +1,9 @@
 import http.client
 
 import pytest
+
 from PySorter import app as test_app
+
 
 @pytest.fixture
 def client():
