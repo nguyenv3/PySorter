@@ -1,3 +1,4 @@
+import json
 import http.client
 
 import pytest
@@ -18,16 +19,18 @@ def test_post_numbers_empty(client):
     Verify the app returns a 422 for an empty request.
     """
     response = client.post(path)
-    print(response.data)
     assert response.status_code == http.client.UNPROCESSABLE_ENTITY
 
 
 def test_post_numbers_string_numbers(client):
     """
-    Verify the app returns a 200 for an empty request.
+    Verify the app returns a sorted list.
     """
     request_data = {
-        'numbers': ['1', '2', '3', '4', '5']
+        'numbers': ['1', '5', '4', '2', '3']
     }
+    expected = [1, 2, 3, 4, 5]
     response = client.post(path, json=request_data)
     assert response.status_code == http.client.OK
+    response_data = json.loads(response.data)
+    assert response_data == expected

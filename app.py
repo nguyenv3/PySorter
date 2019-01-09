@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from schematics.exceptions import DataError
 
 from .request_models import NumberPOSTRequest
@@ -34,4 +34,5 @@ def post_numbers():
     """
     request_model = NumberPOSTRequest(request.get_json())
     request_model.validate()
-    return 'nothing'
+    sorted_list = sorted(request_model.numbers, key=int)
+    return jsonify(sorted_list)
